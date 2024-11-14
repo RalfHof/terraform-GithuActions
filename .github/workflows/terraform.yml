@@ -1,0 +1,27 @@
+name: Terraform workflow
+
+on: push
+
+jobs:
+  apply:
+    name: Terraform apply
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWSRalf}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.awsRalf1}}
+        run: terraform init
+
+      - name: Terraform Apply
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.awsRalf}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.awsRalf1}}
+        run: terraform apply -auto-approve
