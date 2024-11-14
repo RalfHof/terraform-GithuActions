@@ -2,12 +2,48 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-# EC2 Instance
+# Erste EC2-Instance
 resource "aws_instance" "meineErsteInstanz" {
   ami           = "ami-0eddb4a4e7d846d6f"
   instance_type = "t2.micro"
   tags = {
-    Name = "DasIstDerWorkflow"
+    Name = "DasIstDerWorkflow-1"
+  }
+}
+
+# Zweite EC2-Instance
+resource "aws_instance" "meineZweiteInstanz" {
+  ami           = "ami-0eddb4a4e7d846d6f"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "DasIstDerWorkflow-2"
+  }
+}
+
+# Dritte EC2-Instance
+resource "aws_instance" "meineDritteInstanz" {
+  ami           = "ami-0eddb4a4e7d846d6f"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "DasIstDerWorkflow-3"
+  }
+}
+
+# Vierte EC2-Instance
+resource "aws_instance" "meineVierteInstanz" {
+  ami           = "ami-0eddb4a4e7d846d6f"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "DasIstDerWorkflow-4"
+  }
+}
+
+# Fünfte EC2-Instance
+resource "aws_instance" "meineFuenfteInstanz" {
+  ami           = "ami-0eddb4a4e7d846d6f"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "DasIstDerWorkflow-5"
   }
 }
 
@@ -37,7 +73,7 @@ resource "aws_s3_bucket" "data_bucket" {
   }
 }
 
-# RDS Instance with supported instance class and configuration
+# RDS Instance
 resource "aws_db_instance" "my_rds" {
   allocated_storage    = 20
   storage_type         = "gp2"
