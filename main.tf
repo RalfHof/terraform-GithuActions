@@ -31,16 +31,10 @@ resource "aws_subnet" "main_subnet" {
 
 # S3 Bucket
 resource "aws_s3_bucket" "data_bucket" {
-  bucket = "mein-s3-bucket"   # Name des Buckets. Sollte einzigartig sein
+  bucket = "mein-s3-bucket"   # Einzigartiger Name für den Bucket
   tags = {
     Name = "data_bucket"
   }
-}
-
-# Separate ACL resource for the S3 bucket
-resource "aws_s3_bucket_acl" "data_bucket_acl" {
-  bucket = aws_s3_bucket.data_bucket.id
-  acl    = "private"
 }
 
 # RDS Instance with supported instance class and configuration
@@ -48,9 +42,9 @@ resource "aws_db_instance" "my_rds" {
   allocated_storage    = 20
   storage_type         = "gp2"
   engine               = "mysql"
-  engine_version       = "5.7"   # Nutze eine unterstützte Version (ohne den spezifischen Build)
+  engine_version       = "5.7"   # Nutze eine unterstützte Version
   instance_class       = "db.t3.micro"  # Korrigierter Instance Type
-  db_name              = "mydatabase" 
+  db_name              = "mydatabase"
   username             = "admin"
   password             = "your_password" 
   publicly_accessible  = false
